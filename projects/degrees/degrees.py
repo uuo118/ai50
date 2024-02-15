@@ -142,7 +142,7 @@ def shortest_path(source, target):
 
         # Empty frontier means none path exists
         if frontier.empty():
-            raise Exception("None")
+            return None
 
         # Choose a node from the frontier
         node = frontier.remove()
@@ -160,12 +160,11 @@ def shortest_path(source, target):
 
                 # Check if the child node contains the solution
                 if child.state == target:
-                    print(child.action, child.parent)
                     path = []
                     while child.parent is not None:
                         path.append((child.action, child.state))
                         child = child.parent
-                    print(path)
+                    path.reverse()
                     return path
 
                 frontier.add(child)
